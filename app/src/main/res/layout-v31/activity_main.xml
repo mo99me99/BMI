@@ -65,6 +65,8 @@
                     android:hint="Weight"
                     android:inputType="numberDecimal"
                     android:textColor="#363A43"
+                    android:maxLength="5"
+
                     />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -80,11 +82,12 @@
                     android:hint="Height"
                     android:inputType="numberDecimal"
                     android:textColor="#363A43"
+                    android:maxLength="5"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btnStart"
+                android:id="@+id/btnCalculate"
                 android:text="Calculate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
