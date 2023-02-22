@@ -15,4 +15,5 @@ class ResultActivity : AppCompatActivity() {
     }
 
 
+
 }
