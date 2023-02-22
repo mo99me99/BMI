@@ -22,7 +22,7 @@ class ResultActivity : AppCompatActivity() {
 
         val actionBar: androidx.appcompat.app.ActionBar? = supportActionBar
         actionBar!!.hide()
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
