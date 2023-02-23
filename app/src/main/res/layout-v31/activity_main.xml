@@ -66,6 +66,8 @@
                     android:inputType="numberDecimal"
                     android:textColor="#363A43"
                     android:maxLength="6"
+                    tools:text="10.222"
+
 
                     />
             </com.google.android.material.textfield.TextInputLayout>
@@ -83,6 +85,7 @@
                     android:inputType="numberDecimal"
                     android:textColor="#363A43"
                     android:maxLength="6"
+                    tools:text = "10.222"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
