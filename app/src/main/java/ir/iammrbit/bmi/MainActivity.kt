@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)///instead of binding
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -43,16 +43,18 @@ class MainActivity : AppCompatActivity() {
     private fun validation(): Boolean {
         //get values from et
         try{
-            weight = findViewById<EditText>(R.id.etWeight).text.toString().toFloat()
-            weight = findViewById<EditText>(R.id.etHeight).text.toString().toFloat()
-//            height = (binding.etHeight.text.toString()).toFloat()
+            weight = (binding.etWeight.text.toString()).toFloat()
+            height = (binding.etHeight.text.toString()).toFloat()
             if (weight == 800903F && height == 830318F)
                 throw LoveException()
-        }catch (nfe: Exception) {
+        }catch (nfe: java.lang.NumberFormatException) {
             Toast.makeText(this ,  "Not valid number", Toast.LENGTH_SHORT).show()
             return false
-        }catch (le : Exception){
+        }catch (le : LoveException){
             Toast.makeText(this , "ZARA I LOVE YOU HONEY" , Toast.LENGTH_SHORT).show()
+        }catch (e : Exception){
+            Toast.makeText(this , "Something went wrong ! \nTry Again " , Toast.LENGTH_SHORT).show()
+            return false
         }
         return true
     }
