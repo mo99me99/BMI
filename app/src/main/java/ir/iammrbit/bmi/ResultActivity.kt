@@ -17,6 +17,7 @@ class ResultActivity : AppCompatActivity() {
     private var weight : Float? = null
     private var height : Float? = null
     private var bmiResult : Float? = null
+    private var zara : Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -35,20 +36,38 @@ class ResultActivity : AppCompatActivity() {
         val tvResult :TextView = binding.tvResult
         val tvMessage :TextView = binding.tvMessage
         //get values from intent
-        weight = intent.getFloatExtra(Constant.WEIGHT.toString(), 0.0F)
-        height = (intent.getFloatExtra(Constant.HEIGHT.toString() , 0F)/100)
-        Log.i("----------","${intent.getFloatExtra(Constant.WEIGHT.toString(), 0.0F)}")
-        Log.i("-----------","${(intent.getFloatExtra(Constant.HEIGHT.toString() , 0F))}")
+        weight = intent.getFloatExtra(Constant.WEIGHT, 0.0F)
+        height = (intent.getFloatExtra(Constant.HEIGHT , 0F)/100)
+        zara = intent.getBooleanExtra(Constant.Z , false)
 
         //calculate bmi
         bmiResult = calculateBMI()
         //set result
-        tvResult.text = bmiResult.toString().substring(0 ,bmiResult.toString().length-3)
-        when(bmiResult!!){
+        if (zara as Boolean) {
+            zara(tvResult, tvMessage)
+        }
+        else bmiShow(tvResult, tvMessage)
+    }
+
+    private fun zara(tvResult: TextView, tvMessage: TextView) {
+        binding.tvYourBMIis.text = ""
+        tvResult.text = ""
+        tvMessage.text = "I Love You Honey"
+        binding.ivImage.setImageResource(R.drawable.ic_z)
+    }
+
+    private fun bmiShow(tvResult: TextView, tvMessage: TextView) {
+        if (!(bmiResult!! < 0F || bmiResult!! > 100F))
+            tvResult.text = bmiResult.toString().substring(0, bmiResult.toString().length - 3)
+        else {
+            tvResult.text = "This app is for human kind! "
+            binding.tvYourBMIis.text = ""
+        }
+        when (bmiResult!!) {
             in 0F..18.5F -> {
-                    tvMessage.text = "You are underweight "
-                    tvMessage.setTextColor(Color.parseColor("#FF06D2B4"))
-                }
+                tvMessage.text = "You are underweight "
+                tvMessage.setTextColor(Color.parseColor("#FF06D2B4"))
+            }
             in 18.5F..24.99F -> {
                 tvMessage.text = "You are normal "
                 tvMessage.setTextColor(Color.parseColor("#27B707"))
@@ -67,10 +86,8 @@ class ResultActivity : AppCompatActivity() {
             }
             else -> "NOT VALID ENTRIES !"
         }
-
-
-
     }
+
     private fun calculateBMI() : Float {
         return (weight!! / (height!! * height!!))
     }

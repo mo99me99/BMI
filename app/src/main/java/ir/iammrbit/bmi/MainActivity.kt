@@ -27,12 +27,11 @@ class MainActivity : AppCompatActivity() {
 
         val btnCalculate = binding.btnCalculate
         btnCalculate.setOnClickListener{
-
+            intent = Intent(this, ResultActivity::class.java)
             if(!validation())
                 return@setOnClickListener
 
             //create intent and put values to ResultActivity
-            val intent = Intent(this, ResultActivity::class.java)
             intent.putExtra(Constant.WEIGHT.toString(),weight)
             intent.putExtra(Constant.HEIGHT.toString(),height)
             startActivity(intent)
@@ -52,8 +51,10 @@ class MainActivity : AppCompatActivity() {
             return false
         }catch (le : LoveException){
             Toast.makeText(this , "ZARA I LOVE YOU HONEY" , Toast.LENGTH_SHORT).show()
+            intent.putExtra(Constant.Z.toString(),true)
         }catch (e : Exception){
             Toast.makeText(this , "Something went wrong ! \nTry Again " , Toast.LENGTH_SHORT).show()
+
             return false
         }
         return true
