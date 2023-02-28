@@ -43,10 +43,8 @@ class ResultActivity : AppCompatActivity() {
         //calculate bmi
         bmiResult = calculateBMI()
         //set result
-        if (zara as Boolean) {
-            zara(tvResult, tvMessage)
-        }
-        else bmiShow(tvResult, tvMessage)
+        
+        bmiShow(tvResult, tvMessage)
     }
 
     private fun zara(tvResult: TextView, tvMessage: TextView) {
