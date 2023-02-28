@@ -44,14 +44,9 @@ class MainActivity : AppCompatActivity() {
         try{
             weight = (binding.etWeight.text.toString()).toFloat()
             height = (binding.etHeight.text.toString()).toFloat()
-            if (weight == 800903F && height == 830318F)
-                throw LoveException()
         }catch (nfe: java.lang.NumberFormatException) {
             Toast.makeText(this ,  "Not valid number", Toast.LENGTH_SHORT).show()
             return false
-        }catch (le : LoveException){
-            Toast.makeText(this , "ZARA I LOVE YOU HONEY" , Toast.LENGTH_SHORT).show()
-            intent.putExtra(Constant.Z.toString(),true)
         }catch (e : Exception){
             Toast.makeText(this , "Something went wrong ! \nTry Again " , Toast.LENGTH_SHORT).show()
 
